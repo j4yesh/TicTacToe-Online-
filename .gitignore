@@ -1,0 +1,109 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+
+
+
+
+# Ignore Gradle files
+.gradle/
+build/
+gradle-app.setting/
+gradle-wrapper.jar
+gradle-wrapper.properties
+gradle/
+!gradle/wrapper/gradle-wrapper.properties
+
+# Ignore local configuration
+/local.properties
+/.idea/
+/out/
+/captures/
+/*.iml
+
+# Ignore Android Studio specific files
+/.cxx/
+/.externalNativeBuild/
+/.idea/
+/navigation.json
+/test-data/
+/*.hprof
+/.DS_Store
+
+# Ignore generated files
+/build/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+*.jar
+*.keystore
+*.so
+
+# Ignore Logs and caches
+*.log
+*.lock
+*.temp
+*.cache
+/.gradle/
+/.gradle-cache/
+
+# Ignore dependency directories
+/node_modules/
+/yarn.lock
+/package-lock.json
+
+# Ignore Jetpack Compose Compiler and Kotlin Plugin cache
+/.kotlin/
+/.kotlinc/
+/.compose/
+
+# Ignore OS-specific files
+*.swp
+*.swo
+*.swn
+*.sublime-workspace
+*.sublime-project
+
+# Ignore test reports
+/test-results/
+/coverage/
+
+# Ignore personal and secret files
+*.jks
+*.keystore
+*.pem
+*.p12
+/secrets.properties
+/google-services.json
+
+# Ignore virtual environment files
+.venv/
+.vscode/
+
+# Ignore CI/CD artifacts
+/.github/workflows/*.yaml
+/app/build/
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/misc.xml
+.idea/dictionaries/
+
