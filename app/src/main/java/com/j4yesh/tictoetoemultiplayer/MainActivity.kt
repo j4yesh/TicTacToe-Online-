@@ -9,6 +9,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+
+    companion object{
+        public const val msg="com.codewithj4yesh.multiscreen.msg";
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        enableEdgeToEdge()
@@ -27,6 +32,12 @@ class MainActivity : AppCompatActivity() {
             }else{
                 b1.text="O"
             }
+        }
+
+        val backBtn=findViewById<Button>(R.id.backBtn)
+        backBtn.setOnClickListener{
+            Toast.makeText(this,"Switching the activity",Toast.LENGTH_SHORT).show()
+            intent.putExtra(msg,"hello")
         }
 
 
