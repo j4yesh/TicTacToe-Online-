@@ -24,21 +24,21 @@ class MainActivity : AppCompatActivity() {
 //            insets
 //        }
 
-        val b1=findViewById<Button>(R.id.b1)
-        b1.setOnClickListener{
-            Toast.makeText(this,"Button Clicked" , Toast.LENGTH_SHORT).show()
-            if(b1.text==""){
-                b1.text="X"
-            }else{
-                b1.text="O"
-            }
-        }
-
-        val backBtn=findViewById<Button>(R.id.backBtn)
-        backBtn.setOnClickListener{
-            Toast.makeText(this,"Switching the activity",Toast.LENGTH_SHORT).show()
-            intent.putExtra(msg,"hello")
-        }
+//        val b1=findViewById<Button>(R.id.b1)
+//        b1.setOnClickListener{
+//            Toast.makeText(this,"Button Clicked" , Toast.LENGTH_SHORT).show()
+//            if(b1.text==""){
+//                b1.text="X"
+//            }else{
+//                b1.text="O"
+//            }
+//        }
+//
+//        val backBtn=findViewById<Button>(R.id.backBtn)
+//        backBtn.setOnClickListener{
+//            Toast.makeText(this,"Switching the activity",Toast.LENGTH_SHORT).show()
+//            intent.putExtra(msg,"hello")
+//        }
 
 
     }

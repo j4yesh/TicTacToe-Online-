@@ -7,47 +7,139 @@
     android:layout_height="match_parent"
     tools:context=".HomeScreen">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <Button
+        android:id="@+id/backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tictactoe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        android:text="Please Login"
-        android:textSize="34sp"
+        android:layout_margin="20dp"
+        android:fontFamily="cursive"
+        android:text="Tic Tac Toe Online"
+        android:textColor="#EB59FF22"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.049"
+        tools:ignore="HardcodedText" />
 
-    <Button
-        android:id="@+id/Login"
+    <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="224dp"
-        android:text="Login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:columnCount="3"
+        android:rowCount="3"
 
-    <Button
-        android:id="@+id/SignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:text="SignUp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/b1"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="10dp"
+            app:cornerRadius="15dp"
+            android:textStyle="bold"
+            />
+
+
+        <Button
+            android:id="@+id/b2"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="10dp"
+            app:cornerRadius="15dp"
+            android:textStyle="bold"
+
+            />
+
+
+        <Button
+            android:id="@+id/b3"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="10dp"
+            app:cornerRadius="15dp"
+            android:textStyle="bold"
+
+            />
+
+
+        <Button
+            android:id="@+id/b4"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="10dp"
+            app:cornerRadius="15dp"
+            android:textStyle="bold"
+
+            />
+
+
+        <Button
+            android:id="@+id/b5"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="10dp"
+            app:cornerRadius="15dp"
+            android:textStyle="bold"
+
+            />
+
+
+        <Button
+            android:id="@+id/b6"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="10dp"
+            app:cornerRadius="15dp"
+            android:textStyle="bold"
+
+            />
+
+
+        <Button
+            android:id="@+id/b7"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="10dp"
+            app:cornerRadius="15dp"
+            android:textStyle="bold"
+
+            />
+
+
+        <Button
+            android:id="@+id/b8"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="10dp"
+            app:cornerRadius="15dp"
+            android:textStyle="bold"
+
+            />
+
+
+        <Button
+            android:id="@+id/b9"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="10dp"
+            app:cornerRadius="15dp"
+            android:textStyle="bold"
+
+            />
+    </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
