@@ -39,11 +39,18 @@ android {
     }
     buildFeatures{
         viewBinding=true
+        buildConfig = true
+    }
+    packagingOptions {
+        exclude("META-INF/LICENSE.md")
+        exclude("META-INF/LICENSE.txt")
+        exclude("META-INF/NOTICE.md")
+        exclude("META-INF/NOTICE.txt")
     }
 }
 
 dependencies {
-
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -76,5 +83,5 @@ dependencies {
 
     // Preferences (Jetpack DataStore)
     implementation("androidx.datastore:datastore-preferences:1.0.0")
-
+    implementation("org.glassfish.jaxb:jaxb-runtime:2.3.3")
 }

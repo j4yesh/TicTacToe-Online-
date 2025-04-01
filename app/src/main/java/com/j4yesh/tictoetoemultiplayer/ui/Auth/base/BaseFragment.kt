@@ -8,12 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.j4yesh.tictoetoemultiplayer.Network.RemoteDataSource
 import com.j4yesh.tictoetoemultiplayer.Repository.BaseRepository
 
 abstract class BaseFragment<VM: ViewModel,B:ViewBinding , R: BaseRepository>:Fragment() {
 
     protected lateinit var binding: B
     protected lateinit var viewModel: VM
+    protected val remoteDataSource = RemoteDataSource()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
