@@ -2,8 +2,8 @@ package com.j4yesh.tictoetoemultiplayer.ui.Auth.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.j4yesh.tictoetoemultiplayer.Repository.AuthRepository
-import com.j4yesh.tictoetoemultiplayer.Repository.BaseRepository
+import com.j4yesh.tictoetoemultiplayer.Data.Repository.AuthRepository
+import com.j4yesh.tictoetoemultiplayer.Data.Repository.BaseRepository
 import com.j4yesh.tictoetoemultiplayer.ui.Auth.AuthViewModel
 
 class ViewModelFactory (

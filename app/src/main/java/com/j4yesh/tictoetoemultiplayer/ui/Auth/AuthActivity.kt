@@ -13,12 +13,11 @@ class AuthActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)  // Use a container layout for fragments
+        setContentView(R.layout.activity_auth)
 
-        // Load LoginFragment when the activity starts
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.authContainer, LoginFragment()) // Replace with your container ID
+                .replace(R.id.authContainer, LoginFragment())
                 .commit()
         }
     }

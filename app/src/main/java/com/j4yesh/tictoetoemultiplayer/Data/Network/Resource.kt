@@ -1,4 +1,4 @@
-package com.j4yesh.tictoetoemultiplayer.Network
+package com.j4yesh.tictoetoemultiplayer.Data.Network
 
 import okhttp3.ResponseBody
 

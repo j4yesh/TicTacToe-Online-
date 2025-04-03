@@ -11,6 +11,15 @@ android {
     namespace = "com.j4yesh.tictoetoemultiplayer"
     compileSdk = 35
 
+//    compileOptions{
+//        sourceCompatibility=JavaVersion.VERSION_1_8
+//        targetCompatibility=JavaVersion.VERSION_1_8
+//    }
+//
+//    kotlinOptions{
+//        jvmTarget=JavaVersion.VERSION_1_8.toString()
+//    }
+
     defaultConfig {
         applicationId = "com.j4yesh.tictoetoemultiplayer"
         minSdk = 24
@@ -30,7 +39,7 @@ android {
             )
         }
     }
-    compileOptions {
+    compileOptions { //old
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }

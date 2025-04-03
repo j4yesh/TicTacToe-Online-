@@ -1,4 +1,4 @@
-package com.j4yesh.tictoetoemultiplayer.Request
+package com.j4yesh.tictoetoemultiplayer.Data.Request
 
 data class LoginRequest(
     val username: String,

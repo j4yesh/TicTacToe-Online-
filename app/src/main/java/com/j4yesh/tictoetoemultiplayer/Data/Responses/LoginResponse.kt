@@ -1,4 +1,4 @@
-package com.j4yesh.tictoetoemultiplayer.Responses
+package com.j4yesh.tictoetoemultiplayer.Data.Responses
 
 data class LoginResponse(
     val lossCnt: Int,

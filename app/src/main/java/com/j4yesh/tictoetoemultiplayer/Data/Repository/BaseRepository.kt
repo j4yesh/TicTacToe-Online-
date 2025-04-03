@@ -1,6 +1,6 @@
-package com.j4yesh.tictoetoemultiplayer.Repository
+package com.j4yesh.tictoetoemultiplayer.Data.Repository
 
-import com.j4yesh.tictoetoemultiplayer.Network.Resource
+import com.j4yesh.tictoetoemultiplayer.Data.Network.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException

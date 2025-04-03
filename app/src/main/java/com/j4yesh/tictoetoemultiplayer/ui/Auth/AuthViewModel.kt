@@ -1,14 +1,13 @@
 package com.j4yesh.tictoetoemultiplayer.ui.Auth
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.j4yesh.tictoetoemultiplayer.Network.Resource
-import com.j4yesh.tictoetoemultiplayer.Repository.AuthRepository
-import com.j4yesh.tictoetoemultiplayer.Responses.LoginResponse
+import com.j4yesh.tictoetoemultiplayer.Data.Network.Resource
+import com.j4yesh.tictoetoemultiplayer.Data.Repository.AuthRepository
+import com.j4yesh.tictoetoemultiplayer.Data.Responses.LoginResponse
 import kotlinx.coroutines.launch
 
 class AuthViewModel(

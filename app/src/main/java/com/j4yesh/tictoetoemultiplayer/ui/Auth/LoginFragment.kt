@@ -4,17 +4,18 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import com.j4yesh.tictoetoemultiplayer.Network.AuthApi
-import com.j4yesh.tictoetoemultiplayer.Network.RemoteDataSource
-import com.j4yesh.tictoetoemultiplayer.Network.Resource
-import com.j4yesh.tictoetoemultiplayer.R
-import com.j4yesh.tictoetoemultiplayer.Repository.AuthRepository
+import androidx.lifecycle.lifecycleScope
+import com.j4yesh.tictoetoemultiplayer.Data.Network.AuthApi
+import com.j4yesh.tictoetoemultiplayer.Data.Network.Resource
+import com.j4yesh.tictoetoemultiplayer.Data.Repository.AuthRepository
+import com.j4yesh.tictoetoemultiplayer.Data.UserPreferences
 import com.j4yesh.tictoetoemultiplayer.databinding.FragmentLoginBinding
 import com.j4yesh.tictoetoemultiplayer.ui.Auth.base.BaseFragment
+import com.j4yesh.tictoetoemultiplayer.ui.Auth.home.HomeActivity
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,12 +28,19 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding,AuthRepository>() {
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         Toast.makeText(requireContext(),"inside the loginFragment",Toast.LENGTH_LONG).show()
+        binding.progressbar.visible(false)
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
+            binding.progressbar.visible(false)
             when(it){
                 is Resource.Success->{
+                    lifecycleScope.launch{
+                        userPreferences.saveAuthToken(it.value.token)
+                        requireActivity().startNewActivity(HomeActivity::class.java)
+                    }
                     Toast.makeText(requireContext(),it.toString(),Toast.LENGTH_LONG).show()
                 }
                 is Resource.Failure->{
@@ -46,6 +54,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding,AuthRepos
             val password=binding.editTextTextPassword.text.toString().trim()
             //do input validations
             Toast.makeText(requireContext(),"login pressed",Toast.LENGTH_LONG).show();
+            binding.progressbar.visible(true)
             viewModel.login(email,password)
         }
     }

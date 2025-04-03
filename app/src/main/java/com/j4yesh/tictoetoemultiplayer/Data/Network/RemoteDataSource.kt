@@ -1,4 +1,4 @@
-package com.j4yesh.tictoetoemultiplayer.Network
+package com.j4yesh.tictoetoemultiplayer.Data.Network
 
 import androidx.datastore.preferences.protobuf.Api
 import com.j4yesh.tictoetoemultiplayer.BuildConfig
