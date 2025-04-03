@@ -1,6 +1,7 @@
 package com.j4yesh.tictoetoemultiplayer.ui.Auth
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -28,12 +29,14 @@ private const val ARG_PARAM2 = "param2"
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding,AuthRepository>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        Toast.makeText(requireContext(),"inside the loginFragment",Toast.LENGTH_LONG).show()
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             when(it){
                 is Resource.Success->{
                     Toast.makeText(requireContext(),it.toString(),Toast.LENGTH_LONG).show()
                 }
                 is Resource.Failure->{
+                    Log.e("LoginFragment", "Login Failed: ${it.errorBody}")
                     Toast.makeText(requireContext(),"Login Failure",Toast.LENGTH_LONG).show()
                 }
             }
@@ -42,6 +45,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding,AuthRepos
             val email=binding.editTextTextEmailAddress.text.toString().trim()
             val password=binding.editTextTextPassword.text.toString().trim()
             //do input validations
+            Toast.makeText(requireContext(),"login pressed",Toast.LENGTH_LONG).show();
             viewModel.login(email,password)
         }
     }

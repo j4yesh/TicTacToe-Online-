@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RemoteDataSource {
 
     companion object {
-        private const val BASE_URL = "http://localhost:8080/"
+        private const val BASE_URL = "https://tictactoe-online-mf1f.onrender.com/"
     }
 
     fun <Api> buildApi(api: Class<Api>): Api {

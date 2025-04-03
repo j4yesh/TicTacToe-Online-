@@ -3,57 +3,32 @@ package com.j4yesh.tictoetoemultiplayer
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import com.j4yesh.tictoetoemultiplayer.ui.Auth.AuthActivity
-import kotlin.jvm.java
-
+import com.j4yesh.tictoetoemultiplayer.ui.Auth.LoginFragment
 
 class MainActivity : AppCompatActivity() {
 
-    companion object{
-        public const val msg="com.codewithj4yesh.multiscreen.msg";
+    companion object {
+        const val MSG = "com.codewithj4yesh.multiscreen.msg"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
-
         setContentView(R.layout.activity_main)
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
-//        }
-//
-//        val b1=findViewById<Button>(R.id.b1)
-//        b1.setOnClickListener{
-//            Toast.makeText(this,"Button Clicked" , Toast.LENGTH_SHORT).show()
-//            if(b1.text==""){
-//                b1.text="X"
-//            }else{
-//                b1.text="O"
-//            }
-//        }
 
-//        val backBtn=findViewById<Button>(R.id.backBtn)
-//        backBtn.setOnClickListener{
-//            Toast.makeText(this,"Switching the activity",Toast.LENGTH_SHORT).show()
-//            intent.putExtra(msg,"hello")
-//        }
-//
-        val nextBtn=findViewById<Button>(R.id.login_btn)
+        val nextBtn = findViewById<Button>(R.id.login_btn)
         nextBtn.setOnClickListener {
-//            Toast.makeText(this,"Switch anothter",Toast.LENGTH_SHORT).show()
-            val intent =  Intent(this, AuthActivity::class.java )
-            startActivity(intent);
+//            val intent = Intent(this, LoginFragment::class.java)
+//            startActivity(intent)
+
+            setContentView(R.layout.activity_main)
+
+            finish()
+            startActivity(Intent(this, AuthActivity::class.java))
         }
-
-
     }
 }

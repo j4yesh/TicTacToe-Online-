@@ -2,6 +2,7 @@ package com.j4yesh.tictactoe.Controller;
 
 import com.j4yesh.tictactoe.CustomException.InvalidCredentialsException;
 import com.j4yesh.tictactoe.CustomException.UserAlreadyExistsException;
+import com.j4yesh.tictactoe.Dto.LoginResponse;
 import com.j4yesh.tictactoe.Model.AuthUser;
 import com.j4yesh.tictactoe.Service.AuthService;
 import com.j4yesh.tictactoe.Service.AuthUserDetailService;
@@ -38,7 +39,11 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody AuthUser authRequest) {
         try {
-            return ResponseEntity.ok(authService.loginUser(authRequest.getUsername(), authRequest.getPassword()));
+            String token=authService.loginUser(authRequest.getUsername(), authRequest.getPassword());
+            AuthUser authUser= authUserDetailService.getAuthUser(authRequest.getUsername());
+
+            return ResponseEntity.ok(new LoginResponse(authUser.getUsername(),
+                    authUser.getWinCnt(),authUser.getLossCnt(),token));
         } catch (InvalidCredentialsException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         } catch (Exception e) {

@@ -1,6 +1,8 @@
 package com.j4yesh.tictoetoemultiplayer.Repository
 
 import com.j4yesh.tictoetoemultiplayer.Network.AuthApi
+import com.j4yesh.tictoetoemultiplayer.Request.LoginRequest
+import com.j4yesh.tictoetoemultiplayer.Responses.LoginResponse
 
 class AuthRepository (
     private val api: AuthApi
@@ -9,6 +11,6 @@ class AuthRepository (
         username: String,
         password: String
     )=safeApiCall {
-        api.login(username,password)
+        api.login(LoginRequest(username,password))
     }
 }

@@ -40,6 +40,10 @@ public class AuthUserDetailService implements UserDetailsService {
         return userId;
     }
 
+    public AuthUser getAuthUser(String username){
+        return userRepository.findByUsername(username).get();
+    }
+
     public AuthUser getAuthUser(){
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userId = ((UserDetails) principal).getUsername();

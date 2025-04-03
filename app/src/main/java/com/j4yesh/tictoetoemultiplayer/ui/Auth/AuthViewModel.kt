@@ -1,5 +1,7 @@
 package com.j4yesh.tictoetoemultiplayer.ui.Auth
 
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,5 +24,6 @@ class AuthViewModel(
         password:String
     ) = viewModelScope.launch{
         _loginResponse.value=repository.login(username,password)
+        Log.d("AuthViewModel", "Login Response: ${_loginResponse.value}")
     }
 }
