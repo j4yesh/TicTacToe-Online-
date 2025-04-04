@@ -23,6 +23,11 @@ class AuthViewModel(
         password:String
     ) = viewModelScope.launch{
         _loginResponse.value=repository.login(username,password)
+        _loginResponse.value= Resource.Loading
         Log.d("AuthViewModel", "Login Response: ${_loginResponse.value}")
+    }
+
+    suspend fun saveAuthToken(token:String)=viewModelScope.launch {
+        repository.saveAuthToken(token)
     }
 }

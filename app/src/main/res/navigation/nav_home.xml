@@ -7,7 +7,7 @@
 
     <activity
         android:id="@+id/homeActivity"
-        android:name="com.j4yesh.tictoetoemultiplayer.ui.Auth.home.HomeActivity"
+        android:name="com.j4yesh.tictoetoemultiplayer.ui.home.HomeActivity"
         android:label="activity_home"
         tools:layout="@layout/activity_home" />
 

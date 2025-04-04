@@ -27,6 +27,12 @@ class UserPreferences(
         }
     }
 
+    suspend fun deleteAuthToken() {
+        dataStore.edit { preferences ->
+            preferences.remove(KEY_AUTH)
+        }
+    }
+
     companion object {
         private val KEY_AUTH = stringPreferencesKey("key_auth")
     }

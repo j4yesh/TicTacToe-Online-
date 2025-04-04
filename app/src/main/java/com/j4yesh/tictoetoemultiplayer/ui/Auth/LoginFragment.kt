@@ -6,15 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.j4yesh.tictoetoemultiplayer.Data.Network.AuthApi
 import com.j4yesh.tictoetoemultiplayer.Data.Network.Resource
 import com.j4yesh.tictoetoemultiplayer.Data.Repository.AuthRepository
-import com.j4yesh.tictoetoemultiplayer.Data.UserPreferences
 import com.j4yesh.tictoetoemultiplayer.databinding.FragmentLoginBinding
-import com.j4yesh.tictoetoemultiplayer.ui.Auth.base.BaseFragment
-import com.j4yesh.tictoetoemultiplayer.ui.Auth.home.HomeActivity
+import com.j4yesh.tictoetoemultiplayer.ui.base.BaseFragment
+import com.j4yesh.tictoetoemultiplayer.ui.home.HomeActivity
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -35,10 +35,11 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding,AuthRepos
         binding.progressbar.visible(false)
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             binding.progressbar.visible(false)
+            binding.buttonLogin.visible(false)
             when(it){
                 is Resource.Success->{
                     lifecycleScope.launch{
-                        userPreferences.saveAuthToken(it.value.token)
+                        userPreferences.saveAuthToken(it.value.token!! ) //Not Recommended
                         requireActivity().startNewActivity(HomeActivity::class.java)
                     }
                     Toast.makeText(requireContext(),it.toString(),Toast.LENGTH_LONG).show()
@@ -47,8 +48,18 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding,AuthRepos
                     Log.e("LoginFragment", "Login Failed: ${it.errorBody}")
                     Toast.makeText(requireContext(),"Login Failure",Toast.LENGTH_LONG).show()
                 }
+
+                Resource.Loading -> TODO()
             }
         })
+
+        binding.editTextTextPassword.doAfterTextChanged { editable ->
+            val username = binding.editTextTextEmailAddress.text.toString().trim()
+            val password = editable?.toString()?.trim()
+            binding.buttonLogin.enable(username.isNotEmpty() && !password.isNullOrEmpty())
+        }
+
+
         binding.buttonLogin.setOnClickListener{
             val email=binding.editTextTextEmailAddress.text.toString().trim()
             val password=binding.editTextTextPassword.text.toString().trim()
@@ -66,7 +77,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding,AuthRepos
         container: ViewGroup?
     )=FragmentLoginBinding.inflate(inflater,container,false)
 
-    override fun getFragmentRepository()= AuthRepository(remoteDataSource.buildApi(AuthApi::class.java))
+    override fun getFragmentRepository()= AuthRepository(remoteDataSource.buildApi(AuthApi::class.java),userPreferences)
 
 
 }

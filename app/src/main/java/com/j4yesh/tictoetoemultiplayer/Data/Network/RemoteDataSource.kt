@@ -13,12 +13,16 @@ class RemoteDataSource {
         private const val BASE_URL = "https://tictactoe-online-mf1f.onrender.com/"
     }
 
-    fun <Api> buildApi(api: Class<Api>): Api {
+    fun <Api> buildApi(api: Class<Api>, authToken:String?=null): Api {
         val logging = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
 
-        val client = OkHttpClient.Builder().apply {
+        val client = OkHttpClient.Builder().
+            addInterceptor { chain->chain.proceed(chain.request().newBuilder().also{
+                if(authToken!=null) it.addHeader("Authorization","Bearer $authToken")
+            }.build()) }
+            .apply {
             if (BuildConfig.DEBUG) {
                 addInterceptor(logging)
             }
