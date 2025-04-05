@@ -1,6 +1,7 @@
 package com.j4yesh.tictoetoemultiplayer.Data.Repository
 
 import com.j4yesh.tictoetoemultiplayer.Data.Network.Resource
+import com.j4yesh.tictoetoemultiplayer.Data.Network.UserApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
@@ -24,5 +25,9 @@ abstract class BaseRepository {
                 }
             }
         }
+
+    }
+    suspend fun logout(api: UserApi)=safeApiCall {
+        api.logout()
     }
 }

@@ -62,4 +62,11 @@ public class AuthController {
         }
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<?> logoutUser() {
+        // We are not mainting blacklisted token for now , OKK
+        return ResponseEntity.ok("Logged out successfully.");
+    }
+
+
 }

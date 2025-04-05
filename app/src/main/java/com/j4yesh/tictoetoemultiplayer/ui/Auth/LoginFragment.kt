@@ -14,8 +14,13 @@ import com.j4yesh.tictoetoemultiplayer.Data.Network.Resource
 import com.j4yesh.tictoetoemultiplayer.Data.Repository.AuthRepository
 import com.j4yesh.tictoetoemultiplayer.databinding.FragmentLoginBinding
 import com.j4yesh.tictoetoemultiplayer.ui.base.BaseFragment
+import com.j4yesh.tictoetoemultiplayer.ui.enable
+import com.j4yesh.tictoetoemultiplayer.ui.handleApiError
 import com.j4yesh.tictoetoemultiplayer.ui.home.HomeActivity
+import com.j4yesh.tictoetoemultiplayer.ui.startNewActivity
+import com.j4yesh.tictoetoemultiplayer.ui.visible
 import kotlinx.coroutines.launch
+import kotlin.math.log
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,6 +52,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding,AuthRepos
                 is Resource.Failure->{
                     Log.e("LoginFragment", "Login Failed: ${it.errorBody}")
                     Toast.makeText(requireContext(),"Login Failure",Toast.LENGTH_LONG).show()
+                    handleApiError(it){login()}
                 }
 
                 Resource.Loading -> TODO()
@@ -61,13 +67,17 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding,AuthRepos
 
 
         binding.buttonLogin.setOnClickListener{
-            val email=binding.editTextTextEmailAddress.text.toString().trim()
-            val password=binding.editTextTextPassword.text.toString().trim()
-            //do input validations
-            Toast.makeText(requireContext(),"login pressed",Toast.LENGTH_LONG).show();
-            binding.progressbar.visible(true)
-            viewModel.login(email,password)
+            login()
         }
+    }
+
+    private fun login(){
+        val email=binding.editTextTextEmailAddress.text.toString().trim()
+        val password=binding.editTextTextPassword.text.toString().trim()
+        //do input validations
+        Toast.makeText(requireContext(),"login pressed",Toast.LENGTH_LONG).show();
+        binding.progressbar.visible(true)
+        viewModel.login(email,password)
     }
 
     override fun getViewModel()=AuthViewModel::class.java

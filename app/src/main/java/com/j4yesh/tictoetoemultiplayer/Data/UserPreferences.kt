@@ -29,7 +29,8 @@ class UserPreferences(
 
     suspend fun deleteAuthToken() {
         dataStore.edit { preferences ->
-            preferences.remove(KEY_AUTH)
+//            preferences.remove(KEY_AUTH)
+            preferences.clear()
         }
     }
 

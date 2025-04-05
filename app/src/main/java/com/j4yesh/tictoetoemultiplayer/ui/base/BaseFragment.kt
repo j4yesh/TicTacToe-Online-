@@ -5,17 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.j4yesh.tictoetoemultiplayer.Data.Network.RemoteDataSource
+import com.j4yesh.tictoetoemultiplayer.Data.Network.UserApi
 import com.j4yesh.tictoetoemultiplayer.Data.Repository.BaseRepository
 import com.j4yesh.tictoetoemultiplayer.Data.UserPreferences
+import com.j4yesh.tictoetoemultiplayer.ui.Auth.AuthActivity
+import com.j4yesh.tictoetoemultiplayer.ui.startNewActivity
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-abstract class BaseFragment<VM: ViewModel,B:ViewBinding , R: BaseRepository>: Fragment() {
+abstract class BaseFragment<VM: BaseViewModel,B:ViewBinding , R: BaseRepository>: Fragment() {
 
     protected lateinit var binding: B
     protected lateinit var viewModel: VM
@@ -34,6 +36,14 @@ abstract class BaseFragment<VM: ViewModel,B:ViewBinding , R: BaseRepository>: Fr
         viewModel=ViewModelProvider(this,factory).get(getViewModel())
         lifecycleScope.launch { userPreferences.authToken.first() }
         return binding.root
+    }
+
+    fun logout()=lifecycleScope.launch{
+        val authToken=userPreferences.authToken.first()
+        val api=remoteDataSource.buildApi(UserApi::class.java,authToken)
+        viewModel.logout(api)
+        userPreferences.deleteAuthToken()
+        requireActivity().startNewActivity(AuthActivity::class.java)
     }
 
     abstract fun getViewModel(): Class<VM>

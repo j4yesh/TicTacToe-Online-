@@ -13,9 +13,9 @@ import com.j4yesh.tictoetoemultiplayer.Data.Network.UserApi
 import com.j4yesh.tictoetoemultiplayer.Data.Repository.UserRepository
 import com.j4yesh.tictoetoemultiplayer.Data.Responses.LoginResponse
 import com.j4yesh.tictoetoemultiplayer.databinding.FragmentHomeBinding
-import com.j4yesh.tictoetoemultiplayer.ui.Auth.handleApiError
+import com.j4yesh.tictoetoemultiplayer.ui.handleApiError
 import com.j4yesh.tictoetoemultiplayer.ui.base.BaseFragment
-import com.j4yesh.tictoetoemultiplayer.ui.Auth.visible
+import com.j4yesh.tictoetoemultiplayer.ui.visible
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -56,10 +56,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, UserReposi
             }
         })
         binding.buttonLogout.setOnClickListener {
-            lifecycleScope.launch {
-                userPreferences.deleteAuthToken()
-                Toast.makeText(requireContext(),"Logout Successfull",Toast.LENGTH_SHORT).show()
-            }
+            logout()
         }
     }
     private fun HomeFragment.updateUI(user: LoginResponse) {

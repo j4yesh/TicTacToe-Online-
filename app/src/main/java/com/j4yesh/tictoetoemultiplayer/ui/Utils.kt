@@ -1,4 +1,4 @@
-package com.j4yesh.tictoetoemultiplayer.ui.Auth
+package com.j4yesh.tictoetoemultiplayer.ui
 
 import android.app.Activity
 import android.content.Intent
@@ -6,6 +6,8 @@ import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.j4yesh.tictoetoemultiplayer.Data.Network.Resource
 import androidx.fragment.app.Fragment
+import com.j4yesh.tictoetoemultiplayer.ui.Auth.LoginFragment
+import com.j4yesh.tictoetoemultiplayer.ui.base.BaseFragment
 
 fun <A : Activity> Activity.startNewActivity(activity: Class<A>) {
     Intent(this, activity).also {
@@ -46,8 +48,7 @@ fun Fragment.handleApiError(
             if (this is LoginFragment) {
                 requireView().snackbar("You've entered incorrect email or password")
             } else {
-                // perform logout logic here
-                // e.g., findNavController().navigate(...) or clear auth token
+                (this as BaseFragment<*,*,*>).logout()
             }
         }
 

@@ -8,7 +8,7 @@ import androidx.lifecycle.asLiveData
 import com.j4yesh.tictoetoemultiplayer.Data.UserPreferences
 import com.j4yesh.tictoetoemultiplayer.ui.Auth.AuthActivity
 import com.j4yesh.tictoetoemultiplayer.ui.home.HomeActivity
-import com.j4yesh.tictoetoemultiplayer.ui.Auth.startNewActivity
+import com.j4yesh.tictoetoemultiplayer.ui.startNewActivity
 
 class MainActivity : AppCompatActivity() {
 

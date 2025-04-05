@@ -8,11 +8,12 @@ import androidx.lifecycle.viewModelScope
 import com.j4yesh.tictoetoemultiplayer.Data.Network.Resource
 import com.j4yesh.tictoetoemultiplayer.Data.Repository.AuthRepository
 import com.j4yesh.tictoetoemultiplayer.Data.Responses.LoginResponse
+import com.j4yesh.tictoetoemultiplayer.ui.base.BaseViewModel
 import kotlinx.coroutines.launch
 
 class AuthViewModel(
     private val repository:AuthRepository
-) : ViewModel(){
+) : BaseViewModel(repository){
 
     private val _loginResponse : MutableLiveData<Resource<LoginResponse>> = MutableLiveData()
     val loginResponse:LiveData<Resource<LoginResponse>>
