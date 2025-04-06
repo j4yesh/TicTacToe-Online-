@@ -2,6 +2,7 @@ package com.j4yesh.tictoetoemultiplayer.Data.Network
 
 import com.j4yesh.tictoetoemultiplayer.Data.Request.LoginRequest
 import com.j4yesh.tictoetoemultiplayer.Data.Responses.LoginResponse
+import okhttp3.ResponseBody
 import retrofit2.http.Body
 import retrofit2.http.POST
 
@@ -11,6 +12,7 @@ interface AuthApi {
     suspend fun login(@Body request: LoginRequest): LoginResponse
 
     @POST("auth/signup")
-    suspend fun register(@Body request: LoginRequest): LoginResponse // same object can be used
+    suspend fun register(@Body request: LoginRequest): ResponseBody
+
 
 }

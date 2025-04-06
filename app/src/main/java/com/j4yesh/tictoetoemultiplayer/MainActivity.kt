@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
 import com.j4yesh.tictoetoemultiplayer.Data.UserPreferences
 import com.j4yesh.tictoetoemultiplayer.ui.Auth.AuthActivity
+import com.j4yesh.tictoetoemultiplayer.ui.Game.GameActivity
 import com.j4yesh.tictoetoemultiplayer.ui.home.HomeActivity
 import com.j4yesh.tictoetoemultiplayer.ui.startNewActivity
 
@@ -25,7 +26,8 @@ class MainActivity : AppCompatActivity() {
 
         userPreferences.authToken.asLiveData().observe(this, Observer{
 //            Toast.makeText(this,it?:"Token is Null",Toast.LENGTH_SHORT).show()
-            val activity = if (it == null) AuthActivity::class.java else HomeActivity::class.java
+//            val activity = if (it == null) AuthActivity::class.java else HomeActivity::class.java
+            val activity = GameActivity::class.java
             startNewActivity(activity)
 //            startActivity(Intent(this, AuthActivity::class.java))
 

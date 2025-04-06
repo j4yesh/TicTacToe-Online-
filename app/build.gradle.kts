@@ -93,4 +93,6 @@ dependencies {
     // Preferences (Jetpack DataStore)
     implementation("androidx.datastore:datastore-preferences:1.0.0")
     implementation("org.glassfish.jaxb:jaxb-runtime:2.3.3")
+
+    implementation("org.java-websocket:Java-WebSocket:1.5.3")
 }

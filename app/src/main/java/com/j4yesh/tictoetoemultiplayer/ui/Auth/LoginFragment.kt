@@ -42,7 +42,6 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding,AuthRepos
         binding.progressbar.visible(false)
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             binding.progressbar.visible(false)
-            binding.buttonLogin.visible(false)
             when(it){
                 is Resource.Success->{
                     lifecycleScope.launch{
@@ -53,6 +52,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding,AuthRepos
                 }
                 is Resource.Failure->{
                     Log.e("LoginFragment", "Login Failed: ${it.errorBody}")
+                    binding.buttonLogin.visible(true)
                     Toast.makeText(requireContext(),"Login Failure",Toast.LENGTH_LONG).show()
                     handleApiError(it){login()}
                 }
@@ -85,6 +85,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding,AuthRepos
         //do input validations
         Toast.makeText(requireContext(),"login pressed",Toast.LENGTH_LONG).show();
         binding.progressbar.visible(true)
+        binding.buttonLogin.visible(false)
         viewModel.login(email,password)
     }
 

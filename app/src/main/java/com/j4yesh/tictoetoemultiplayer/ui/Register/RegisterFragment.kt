@@ -16,7 +16,9 @@ import com.j4yesh.tictoetoemultiplayer.Data.Repository.AuthRepository
 import com.j4yesh.tictoetoemultiplayer.R
 import com.j4yesh.tictoetoemultiplayer.databinding.FragmentLoginBinding
 import com.j4yesh.tictoetoemultiplayer.databinding.FragmentRegisterBinding
+import com.j4yesh.tictoetoemultiplayer.ui.Auth.AuthActivity
 import com.j4yesh.tictoetoemultiplayer.ui.Auth.AuthViewModel
+import com.j4yesh.tictoetoemultiplayer.ui.Auth.LoginFragment
 import com.j4yesh.tictoetoemultiplayer.ui.base.BaseFragment
 import com.j4yesh.tictoetoemultiplayer.ui.enable
 import com.j4yesh.tictoetoemultiplayer.ui.handleApiError
@@ -41,20 +43,20 @@ class RegisterFragment : BaseFragment<RegisterViewModel, FragmentRegisterBinding
         Toast.makeText(requireContext(),"inside the register fragment",Toast.LENGTH_LONG).show()
         binding.progressbar.visible(false)
         viewModel.registerResponse.observe(viewLifecycleOwner, Observer {
-            binding.progressbar.visible(false)
+//            binding.progressbar.visible(false)
             binding.buttonRegister.visible(false)
             when(it){
                 is Resource.Success->{
-//                    lifecycleScope.launch{
-//                        userPreferences.saveAuthToken(it.value.token!! ) //Not Recommended
-//                        requireActivity().startNewActivity(HomeActivity::class.java)
-//                    }
+                    lifecycleScope.launch{
+                        requireActivity().startNewActivity(AuthActivity::class.java)
+                    }
                     Toast.makeText(requireContext(),it.toString(),Toast.LENGTH_LONG).show()
                 }
                 is Resource.Failure->{
                     Log.e("LoginFragment", "Login Failed: ${it.errorBody}")
                     Toast.makeText(requireContext(),"Login Failure",Toast.LENGTH_LONG).show()
 //                    handleApiError(it){login()}
+                    binding.buttonRegister.visible(true)
                 }
 
                 Resource.Loading -> {
