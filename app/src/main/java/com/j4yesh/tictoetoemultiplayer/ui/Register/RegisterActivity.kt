@@ -15,7 +15,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.authContainer, RegisterFragment())
+                .replace(R.id.registerContainer, RegisterFragment())
                 .commit()
         }
     }

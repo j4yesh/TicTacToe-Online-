@@ -1,5 +1,6 @@
 package com.j4yesh.tictoetoemultiplayer.ui.Register
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -17,7 +18,6 @@ import com.j4yesh.tictoetoemultiplayer.R
 import com.j4yesh.tictoetoemultiplayer.databinding.FragmentLoginBinding
 import com.j4yesh.tictoetoemultiplayer.databinding.FragmentRegisterBinding
 import com.j4yesh.tictoetoemultiplayer.ui.Auth.AuthActivity
-import com.j4yesh.tictoetoemultiplayer.ui.Auth.AuthViewModel
 import com.j4yesh.tictoetoemultiplayer.ui.Auth.LoginFragment
 import com.j4yesh.tictoetoemultiplayer.ui.base.BaseFragment
 import com.j4yesh.tictoetoemultiplayer.ui.enable
@@ -42,6 +42,8 @@ class RegisterFragment : BaseFragment<RegisterViewModel, FragmentRegisterBinding
         super.onActivityCreated(savedInstanceState)
         Toast.makeText(requireContext(),"inside the register fragment",Toast.LENGTH_LONG).show()
         binding.progressbar.visible(false)
+        Log.d("BaseFragment", "ViewModel Class: ${getViewModel().name}")
+
         viewModel.registerResponse.observe(viewLifecycleOwner, Observer {
 //            binding.progressbar.visible(false)
             binding.buttonRegister.visible(false)
@@ -54,7 +56,7 @@ class RegisterFragment : BaseFragment<RegisterViewModel, FragmentRegisterBinding
                 }
                 is Resource.Failure->{
                     Log.e("LoginFragment", "Login Failed: ${it.errorBody}")
-                    Toast.makeText(requireContext(),"Login Failure",Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(),"Registration Failure",Toast.LENGTH_LONG).show()
 //                    handleApiError(it){login()}
                     binding.buttonRegister.visible(true)
                 }
@@ -71,6 +73,11 @@ class RegisterFragment : BaseFragment<RegisterViewModel, FragmentRegisterBinding
             binding.buttonRegister.enable(username.isNotEmpty() && !password.isNullOrEmpty())
         }
 
+        binding.textViewRegisterNow.setOnClickListener {
+            val intent = Intent(requireContext(), AuthActivity::class.java)
+            startActivity(intent)
+
+        }
 
         binding.buttonRegister.setOnClickListener{
             register()

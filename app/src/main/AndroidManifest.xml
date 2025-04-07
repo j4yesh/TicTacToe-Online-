@@ -24,10 +24,10 @@
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.home.HomeFragment"
-            android:exported="false"
-            android:theme="@style/Theme.TicToeToeMultiplayer" />
+<!--        <activity-->
+<!--            android:name=".ui.home.HomeFragment"-->
+<!--            android:exported="false"-->
+<!--            android:theme="@style/Theme.TicToeToeMultiplayer" />-->
         <activity
             android:name=".ui.Auth.AuthActivity"
             android:exported="false" />

@@ -35,13 +35,16 @@
     </style>
 
     <style name="BoardCell">
-        <item name="android:layout_width">60dp</item>
-        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">#DDDDDD</item>
+        <item name="android:background">@drawable/board_cell_bg</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_margin">4dp</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:elevation">4dp</item> <!-- Adds shadow on Lollipop+ -->
     </style>
+
 
 </resources>

@@ -7,14 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.Register.RegisterFragment">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="165dp"
-        android:layout_height="202dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/bg_login_page1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/imageView2"
@@ -91,18 +84,18 @@
         android:text="Register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewForgotPassword" />
-
-    <TextView
-        android:id="@+id/textViewForgotPassword"
-        style="@style/TextDefault"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/forgot_your_password"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/textViewForgotPassword"-->
+<!--        style="@style/TextDefault"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:text="@string/forgot_your_password"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />-->
 
     <TextView
         android:id="@+id/textViewRegisterNow"
@@ -110,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="Already have an account login now"
+        android:text="Already have an account , login now"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

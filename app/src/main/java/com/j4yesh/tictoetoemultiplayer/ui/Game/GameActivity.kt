@@ -26,11 +26,12 @@ class GameActivity : AppCompatActivity() {
 
         val boardContainer: GridLayout = findViewById(R.id.boardGrid)
         val statusText: TextView = findViewById(R.id.statusText)
-        val usernameInput: EditText = findViewById(R.id.usernameInput)
-        val roomIdInput: EditText = findViewById(R.id.roomIdInput)
-        val joinButton: Button = findViewById(R.id.joinGameButton)
+//        val usernameInput: EditText = findViewById(R.id.usernameInput)
+//        val roomIdInput: EditText = findViewById(R.id.roomIdInput)
+//        val joinButton: Button = findViewById(R.id.joinGameButton)
         var loadingSpinner: ProgressBar=findViewById(R.id.loadingSpinner)
         loadingSpinner.visibility=View.GONE
+
         cells = (0 until 9).map { i ->
             val cell = boardContainer.getChildAt(i) as TextView
             cell.setOnClickListener {
@@ -39,12 +40,22 @@ class GameActivity : AppCompatActivity() {
             cell
         }
 
-        joinButton.setOnClickListener {
-            val username = usernameInput.text.toString()
-            val roomId = roomIdInput.text.toString()
+//        joinButton.setOnClickListener {
+//            val username = usernameInput.text.toString()
+//            val roomId = roomIdInput.text.toString()
+//            loadingSpinner.visibility = View.VISIBLE
+//            viewModel.joinGame(username, roomId)
+//        }
+
+            val username = intent.getStringExtra("username")
+            val roomId = intent.getStringExtra("roomid")
+            val usernameView: TextView=findViewById<TextView>(R.id.username)
+            usernameView.text="Username: "+username;
+            val roomidView:TextView=findViewById<TextView>(R.id.roomid)
+            roomidView.text="Room ID: "+roomId;
             loadingSpinner.visibility = View.VISIBLE
-            viewModel.joinGame(username, roomId)
-        }
+            viewModel.joinGame(username.toString(), roomId.toString())
+
 
         viewModel.status.observe(this) { statusText.text = it }
         viewModel.isLoading.observe(this) { isLoading ->

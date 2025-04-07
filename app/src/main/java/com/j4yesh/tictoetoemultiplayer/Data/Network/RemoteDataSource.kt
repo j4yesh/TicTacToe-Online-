@@ -6,6 +6,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class RemoteDataSource {
 
@@ -19,6 +20,7 @@ class RemoteDataSource {
         }
 
         val client = OkHttpClient.Builder().
+
             addInterceptor { chain->chain.proceed(chain.request().newBuilder().also{
                 if(authToken!=null) it.addHeader("Authorization","Bearer $authToken")
             }.build()) }
@@ -26,7 +28,11 @@ class RemoteDataSource {
             if (BuildConfig.DEBUG) {
                 addInterceptor(logging)
             }
-        }.build()
+        }
+            .connectTimeout(60, TimeUnit.SECONDS)  // connection timeout
+            .readTimeout(60, TimeUnit.SECONDS)     // socket read timeout
+            .writeTimeout(60, TimeUnit.SECONDS)    // socket write timeout
+            .build()
 
         return Retrofit.Builder()
             .baseUrl(BASE_URL)

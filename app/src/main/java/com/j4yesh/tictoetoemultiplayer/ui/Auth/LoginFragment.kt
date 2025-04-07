@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import com.j4yesh.tictoetoemultiplayer.Data.Network.AuthApi
 import com.j4yesh.tictoetoemultiplayer.Data.Network.Resource
 import com.j4yesh.tictoetoemultiplayer.Data.Repository.AuthRepository
+import com.j4yesh.tictoetoemultiplayer.Data.User
 import com.j4yesh.tictoetoemultiplayer.databinding.FragmentLoginBinding
 import com.j4yesh.tictoetoemultiplayer.ui.Register.RegisterActivity
 import com.j4yesh.tictoetoemultiplayer.ui.base.BaseFragment
@@ -45,6 +46,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding,AuthRepos
             when(it){
                 is Resource.Success->{
                     lifecycleScope.launch{
+                        userPreferences.saveUser(User(it.value.username,it.value.winCnt,it.value.lossCnt))
                         userPreferences.saveAuthToken(it.value.token!! ) //Not Recommended
                         requireActivity().startNewActivity(HomeActivity::class.java)
                     }

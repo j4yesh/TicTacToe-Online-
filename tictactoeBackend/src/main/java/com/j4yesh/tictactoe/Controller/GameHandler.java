@@ -120,6 +120,7 @@ public class GameHandler extends TextWebSocketHandler {
             game.endGame(session);
             games.remove(game.getPlayer1());
             games.remove(game.getPlayer2());
+            gameIdFirstPlayer.remove(getRoomId(session));
         }
     }
 
