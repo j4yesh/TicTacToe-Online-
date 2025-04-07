@@ -1,10 +1,13 @@
 package com.j4yesh.tictoetoemultiplayer.ui.home
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
@@ -12,6 +15,7 @@ import com.j4yesh.tictoetoemultiplayer.Data.Network.Resource
 import com.j4yesh.tictoetoemultiplayer.Data.Network.UserApi
 import com.j4yesh.tictoetoemultiplayer.Data.Repository.UserRepository
 import com.j4yesh.tictoetoemultiplayer.Data.Responses.LoginResponse
+import com.j4yesh.tictoetoemultiplayer.R
 import com.j4yesh.tictoetoemultiplayer.databinding.FragmentHomeBinding
 import com.j4yesh.tictoetoemultiplayer.ui.handleApiError
 import com.j4yesh.tictoetoemultiplayer.ui.base.BaseFragment
@@ -58,12 +62,35 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, UserReposi
         binding.buttonLogout.setOnClickListener {
             logout()
         }
+        binding.hostGame.setOnClickListener {
+            showEditTextDialog()
+        }
     }
     private fun HomeFragment.updateUI(user: LoginResponse) {
         with(binding) {
             textViewName.text = user.username
             winCnt.text = user.winCnt.toString()
             lossCnt.text=user.lossCnt.toString()
+        }
+    }
+
+    private fun showEditTextDialog(){
+        binding.tvTextView.setOnClickListener{
+            val builder=AlertDialog.Builder(requireContext())
+            val inflater: LayoutInflater= layoutInflater
+            val dialogLayout=inflater.inflate(R.layout.modal_field,null)
+            val editText: EditText=dialogLayout.findViewById<EditText>(R.id.et_editText)
+            with(builder){
+                setTitle("enter some val")
+                setPositiveButton("OK"){dialog,which->
+                    binding.tvTextView.text=editText.text.toString()
+                }
+                setNegativeButton("Cancel") {dialog,which->
+                    Log.d("Main","Negative button clicked")
+                }
+                setView(dialogLayout)
+                show()
+            }
         }
     }
 

@@ -1,5 +1,7 @@
 package com.j4yesh.tictoetoemultiplayer.ui.Game
 
+import android.view.View
+import android.widget.ProgressBar
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,6 +20,9 @@ class GameViewModel : ViewModel() {
     private val _status = MutableLiveData<String>()
     val status: LiveData<String> = _status
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     private val _myTurn = MutableLiveData<Boolean>(false)
     val myTurn: LiveData<Boolean> = _myTurn
 
@@ -30,6 +35,8 @@ class GameViewModel : ViewModel() {
         socket = object : WebSocketClient(uri) {
             override fun onOpen(handshakedata: ServerHandshake?) {
                 _status.postValue("Connected. Waiting for opponent...")
+                _isLoading.postValue(false)
+
             }
 
             override fun onMessage(message: String?) {

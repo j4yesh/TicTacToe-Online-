@@ -24,4 +24,5 @@ class HomeActivity : AppCompatActivity() {
                 .commit()
         }
     }
+
 }

@@ -1,9 +1,11 @@
 package com.j4yesh.tictoetoemultiplayer.ui.Game
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.GridLayout
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -27,7 +29,8 @@ class GameActivity : AppCompatActivity() {
         val usernameInput: EditText = findViewById(R.id.usernameInput)
         val roomIdInput: EditText = findViewById(R.id.roomIdInput)
         val joinButton: Button = findViewById(R.id.joinGameButton)
-
+        var loadingSpinner: ProgressBar=findViewById(R.id.loadingSpinner)
+        loadingSpinner.visibility=View.GONE
         cells = (0 until 9).map { i ->
             val cell = boardContainer.getChildAt(i) as TextView
             cell.setOnClickListener {
@@ -39,11 +42,14 @@ class GameActivity : AppCompatActivity() {
         joinButton.setOnClickListener {
             val username = usernameInput.text.toString()
             val roomId = roomIdInput.text.toString()
+            loadingSpinner.visibility = View.VISIBLE
             viewModel.joinGame(username, roomId)
         }
 
         viewModel.status.observe(this) { statusText.text = it }
-
+        viewModel.isLoading.observe(this) { isLoading ->
+            loadingSpinner.visibility = if (isLoading) View.VISIBLE else View.GONE
+        }
         viewModel.board.observe(this) { board ->
             for (i in 0..2) {
                 for (j in 0..2) {

@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
 
         userPreferences.authToken.asLiveData().observe(this, Observer{
 //            Toast.makeText(this,it?:"Token is Null",Toast.LENGTH_SHORT).show()
-//            val activity = if (it == null) AuthActivity::class.java else HomeActivity::class.java
-            val activity = GameActivity::class.java
+            val activity = if (it == null) AuthActivity::class.java else HomeActivity::class.java
+//            val activity = GameActivity::class.java
             startNewActivity(activity)
 //            startActivity(Intent(this, AuthActivity::class.java))
 
