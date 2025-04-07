@@ -98,6 +98,12 @@ public class GameHandler extends TextWebSocketHandler {
                     game.processMove(session, position);
                 }
             }
+            if("reset".equals(type)){
+                GameSession game = findGameByPlayer(session.getId());
+                if (game != null) {
+                    game.resetGame();
+                }
+            }
         } catch (Exception e) {
             System.out.println("Invalid JSON format: " + payload);
             e.printStackTrace();

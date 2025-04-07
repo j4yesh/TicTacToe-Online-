@@ -85,6 +85,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
         <!-- Buttons or dynamic game cells go here -->
+        <TextView android:id="@+id/cell_0" style="@style/BoardCell"/>
+        <TextView android:id="@+id/cell_1" style="@style/BoardCell"/>
+        <TextView android:id="@+id/cell_2" style="@style/BoardCell"/>
+        <TextView android:id="@+id/cell_3" style="@style/BoardCell"/>
+        <TextView android:id="@+id/cell_4" style="@style/BoardCell"/>
+        <TextView android:id="@+id/cell_5" style="@style/BoardCell"/>
+        <TextView android:id="@+id/cell_6" style="@style/BoardCell"/>
+        <TextView android:id="@+id/cell_7" style="@style/BoardCell"/>
+        <TextView android:id="@+id/cell_8" style="@style/BoardCell"/>
     </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

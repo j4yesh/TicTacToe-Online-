@@ -66,9 +66,26 @@ class GameViewModel : ViewModel() {
                 }
             }
 
-            message.startsWith("Win:") -> {
-                _status.postValue("Player ${message.split(":")[1]} wins!")
+            message.startsWith("Game over! X wins!") -> {
+                _status.postValue("X wins!")
                 _myTurn.postValue(false)
+            }
+
+            message.startsWith("Game over! O wins!") -> {
+                _status.postValue("O wins!")
+                _myTurn.postValue(false)
+            }
+
+            message.startsWith("Game over! It's a draw!") -> {
+                _status.postValue("It's a draw!")
+                _myTurn.postValue(false)
+
+            }
+
+            message == "Opponent disconnected. You win!" -> {
+                _status.postValue("Opponent disconnected. You win!")
+                _myTurn.postValue(false)
+
             }
 
             message == "Your turn." -> {
@@ -76,11 +93,35 @@ class GameViewModel : ViewModel() {
                 _myTurn.postValue(true)
             }
 
-            message == "Not your turn!" -> {
+            message == "Not your turn." -> {
                 _status.postValue("Not your turn!")
+            }
+
+            message == "Invalid move. Try again." -> {
+                _status.postValue("Invalid move. Try again.")
+            }
+
+            message == "Invalid move format." -> {
+                _status.postValue("Invalid move format.")
+            }
+
+            message == "Invalid move coordinates." -> {
+                _status.postValue("Invalid move coordinates.")
+            }
+
+            message.startsWith("New game!") -> {
+                _status.postValue(message)
+                resetBoard()
+                currentSymbol = if (message.contains("You are X")) "X" else "O"
+                _myTurn.postValue(message.contains("Your turn"))
+            }
+
+            else -> {
+                _status.postValue(message) // fallback
             }
         }
     }
+
 
     private fun applyMove(row: Int, col: Int, symbol: String) {
         val updated = _board.value?.map { it.clone() }?.toTypedArray()
@@ -95,6 +136,11 @@ class GameViewModel : ViewModel() {
                 put("position", "$row,$col")
             }
             socket.send(move.toString())
+            _status.postValue("Waiting for opponents move...")
+            //"Waiting for opponent..."
         }
+    }
+    private fun resetBoard() {
+        _board.postValue(Array(3) { Array(3) { "" } })
     }
 }

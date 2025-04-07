@@ -77,13 +77,13 @@ public class GameSession {
             scoreTrackerService.increaseWin((this.currentTurn==player1)?player1username:player2username);
             scoreTrackerService.increaseLoss((this.currentTurn==player1)?player2username:player1username);
 
-            resetGame();
+//            resetGame();
             return;
         }
 
         if (checkDraw()) {
             broadcast("Game over! It's a draw!");
-            resetGame();
+//            resetGame();
             return;
         }
 
@@ -109,7 +109,7 @@ public class GameSession {
         return true;
     }
 
-    private void resetGame() {
+    public void resetGame() {
         board = new String[][]{{"", "", ""}, {"", "", ""}, {"", "", ""}};
         currentTurn = player1;
         sendMessage(player1, "New game! You are X. Your turn.");
