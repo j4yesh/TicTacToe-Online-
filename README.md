@@ -1,8 +1,10 @@
-# 🕹️ Multiplayer Tic Tac Toe
+# 🕹️ Online Tic Tac Toe
+
+### Note: This project is deployed on a free Render instance. The game may take 40–50 seconds to load initially. If it doesn't load, please check the Swagger UI link provided below to verify if the backend is running and restart the app.
 
 A real-time multiplayer Tic Tac Toe game built with a robust tech stack:
 
-- 📱 **Android** (MVVM Architecture)
+- 📱 **Android** (MVVM Architecture,Kotlin)
 - 🧠 **Spring Boot Backend**
 - 🗃️ **MongoDB Database**
 - 🔐 **REST API** for Authentication & Authorization
@@ -13,7 +15,7 @@ A real-time multiplayer Tic Tac Toe game built with a robust tech stack:
 
 ## 🚀 Features
 
-- 👥 Multiplayer Tic Tac Toe (2 players)
+- 👥 Online Tic Tac Toe
 - ✨ Real-time updates using WebSocket
 - 🛡️ Secure login & signup with JWT-based authentication
 - 📊 Swagger UI integration for easy backend testing
@@ -24,7 +26,7 @@ A real-time multiplayer Tic Tac Toe game built with a robust tech stack:
 
 | Login | Lobby | Gameplay |
 |-------|-------|----------|
-| ![Login](screenshots/login.png) | ![Lobby](screenshots/lobby.png) | ![Gameplay](screenshots/gameplay.png) |
+| ![Login](https://raw.githubusercontent.com/j4yesh/TicTacToe-Online-/refs/heads/main/Screenshots/1.png) | ![Lobby](https://raw.githubusercontent.com/j4yesh/TicTacToe-Online-/refs/heads/main/Screenshots/2.png) | ![Gameplay](https://raw.githubusercontent.com/j4yesh/TicTacToe-Online-/refs/heads/main/Screenshots/3.png) |
 
 > *(Put your actual image files inside a `screenshots/` folder in the root of your project)*
 
@@ -42,7 +44,7 @@ You can access and test the backend APIs via Swagger:
 ## 🛠️ Tech Stack
 
 ### Backend (Spring Boot)
-- Java 17+
+- Java 20+
 - Spring Web
 - Spring Security
 - Spring Data MongoDB
@@ -61,8 +63,9 @@ You can access and test the backend APIs via Swagger:
 
 ## ⚙️ Setup Instructions
 
-### Backend
 1. Clone the repo:
    ```bash
-   git clone https://github.com/your-username/tictactoe-backend.git
-   cd tictactoe-backend
+   git clone https://github.com/j4yesh/TicTacToe-Online-.git
+   
+2. Application build
+   👉 **[Download](https://www.mediafire.com/file/gct5m6hlez1t7s6/app-release.apk/file)**  
