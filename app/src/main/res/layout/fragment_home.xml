@@ -56,15 +56,15 @@
             android:layout_marginTop="12dp"
             android:text="Logout" />
 
-        <Button
-            android:id="@+id/host_game"
-            style="@style/ButtonPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/table"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="12dp"
-            android:text="HostGame" />
+<!--        <Button-->
+<!--            android:id="@+id/host_game"-->
+<!--            style="@style/ButtonPrimary"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/table"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:text="HostGame" />-->
 
         <Button
             android:id="@+id/join_game"

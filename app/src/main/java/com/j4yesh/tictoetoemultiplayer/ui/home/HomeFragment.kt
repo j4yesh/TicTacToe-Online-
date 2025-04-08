@@ -64,9 +64,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, UserReposi
         binding.buttonLogout.setOnClickListener {
             logout()
         }
-        binding.hostGame.setOnClickListener {
-            showEditTextDialog("Enter any Room ID")
-        }
+//        binding.hostGame.setOnClickListener {
+//            showEditTextDialog("Enter any Room ID")
+//        }
         binding.joinGame.setOnClickListener {
             showEditTextDialog("Enter Room ID")
         }
