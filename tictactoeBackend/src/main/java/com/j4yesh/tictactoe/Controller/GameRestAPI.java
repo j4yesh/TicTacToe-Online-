@@ -37,6 +37,9 @@ public class GameRestAPI {
     ResponseEntity<?> getAllPlayers(){
         try{
             List<AuthUser> players=gameplayService.allPlayers();
+            for(int i=0;i<players.size();i++){
+                players.get(i).setPassword(null);
+            }
             return ResponseEntity.ok().body(players);
         }catch (Exception e){
             return  ResponseEntity.internalServerError().body(e.getMessage());
